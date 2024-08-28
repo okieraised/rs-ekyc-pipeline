@@ -1,0 +1,37 @@
+[package]
+name = "rs-ekyc-pipeline"
+version = "0.1.0"
+edition = "2021"
+build = "build.rs"
+authors = ["Thomas Pham <phamtri2895@gmail.com>"]
+description = "A ekyc pipeline in Rust"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+anyhow = "1.0.86"
+nalgebra = "0.33.0"
+ndarray = "0.16.1"
+ndarray-linalg = "0.16.0"
+ndarray-npy = "0.8.1"
+ndarray-rand = "0.15.0"
+opencv = { version = "0.92.2", default-features = false, features = ["calib3d", "features2d", "rgb", "imgproc", "imgcodecs"]}
+prost = "0.13.1"
+prost-build = "0.13.1"
+serde = { version = "1.0.209", features = ["derive"] }
+serde_json = "1.0.127"
+tokio = {  version = "1.39.3", features = ["rt", "rt-multi-thread", "macros"] }
+tonic-build = "0.12.2"
+tonic = "0.12.2"
+
+[lib]
+name = "rs_ekyc_pipeline"
+
+[build-dependencies]
+tonic-build = "0.12.2"
+
+[profile.dev]
+opt-level = 0
+incremental = false
+
+[profile.release]
+opt-level = 3
